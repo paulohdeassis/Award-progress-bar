@@ -1,0 +1,1 @@
+Plugin that allows you to create a basic progress bar for winning an award based on how much your client bought on your store

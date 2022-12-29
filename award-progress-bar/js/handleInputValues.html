@@ -1,0 +1,85 @@
+
+
+<script> 
+const isFreeShippingActivated = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_free_shipping_toggle]')[0];
+    return input.value
+}
+
+const getFreeShippingIncentiveMessage = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_free_shipping_incentive_message]')[0];
+    return input.innerText;
+}
+const getFreeShippingPurchaseMessage = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_free_shipping_purchase_message]')[0];
+    return input.innerText;
+}
+const getFreeShippingSuccessMessage = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_free_shipping_success_message]')[0];
+    return input.innerText;
+}
+
+const isAwardActivated = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_free_shipping_toggle]')[0];
+    return input.value
+}
+
+const getAwardMinPurchase = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_award_min_purchase]')[0];
+    return input.value
+}
+const getProductSku = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_award_product_sku]')[0];
+    return input.value
+}
+const getAwardIncentiveMessage = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_award_incentive_message]')[0];
+    return input.innerText;
+}
+const getAwardPurchaseMessage = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_award_purchase_message]')[0];
+    return input.innerText;
+}
+const getAwardSuccessMessage = () => {
+    const input = window.getElementsByName('carbon_fields_compact_input[_award_success_message]')[0];
+    return input.innerText;
+}
+
+
+
+
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const submitBtn = window.querySelector('#publish');
+    const pluginConfig = {
+        freeShippingConfig: {
+            isActive: isFreeShippingActivated(),
+            incentiveMessage: getFreeShippingIncentiveMessage(),
+            purchaseMessage: getFreeShippingPurchaseMessage(),
+            sucessMessage: getFreeShippingSuccessMessage(),
+        },
+
+        awardConfig: {
+            isActive: isAwardActivated(),
+            minAmount: getAwardMinPurchase(),
+            productSku: getProductSku(),
+            incentiveMessage: getAwardIncentiveMessage(),
+            purchaseMessage: getAwardPurchaseMessage(),
+            sucessMessage: getAwardSuccessMessage(),
+        }
+      
+    }
+
+    localStorage.setItem('pluginConfig', JSON.stringify(pluginConfig))
+    if(localStorage.getItem('pluginConfig') !== undefined){
+        return window.alert('configurações atualizadas com sucesso!');
+    }
+
+    return window.alert('Houve um erro, tente novamente.')
+}
+
+const submitBtn = window.querySelector('#publish');
+
+submitBtn.addEventListener('click', handleSubmit);
+</script>
