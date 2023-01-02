@@ -1,8 +1,7 @@
 <?php
 
 
-if( !defined('ABSPATH') )
-{
+if( !defined('ABSPATH') ) {
       die('You cannot be here');
 }
 
@@ -16,10 +15,27 @@ function load_carbon_fields() {
       \Carbon_Fields\Carbon_Fields::boot();
 }
 
+function crb_values_are_avail() {
+    
+      //get all data free shipping options
+      $isFreeShippingActive = get_plugin_options('free_shipping_toggle');
+      $freeShippingIcentiveMessage = get_plugin_options('free_shipping_incentive_message');
+      $freeShippingPurchaseMessage = get_plugin_options('free_shipping_purchase_message');
+      $freeShippingSuccessMessage = get_plugin_options('free_shipping_success_message');
+ 
 
+      // // get all data from award options 
+      $isAwardActive = get_plugin_options('award_toggle');
+      $awardProductSku = get_plugin_options('award_product_sku');
+      $awardMInPurchaseAmount = get_plugin_options('award_min_purchase');
+      $awardIncentiveMessage= get_plugin_options('award_incentive_message');
+      $awardPurchaseMessage = get_plugin_options('award_purchase_message');
+      $awardSucessMessage = get_plugin_options('award_success_message');
+}
 
 add_action('after_setup_theme', 'load_carbon_fields');
 add_action('carbon_fields_register_fields', 'create_options_page');
+add_action( 'carbon_fields_fields_registered', 'crb_values_are_avail' );
 
 
 function get_min_amount() {
@@ -76,8 +92,8 @@ function create_options_page() {
     
 } 
 
-add_action( 'carbon_fields_fields_registered', 'crb_values_are_avail' );
-function crb_values_are_avail() {
-    echo carbon_get_theme_option( 'award_toggle' );
-}
+// add_action( 'carbon_fields_fields_registered', 'crb_values_are_avail' );
+// function crb_values_are_avail() {
+//     echo carbon_get_theme_option( 'award_toggle' );
+// }
 

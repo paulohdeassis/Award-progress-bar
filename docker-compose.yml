@@ -14,7 +14,7 @@ services:
             WP_DEBUG: true
             WP_DEBUG_DISPLAY: true
         volumes: 
-            - ./award-progress-bar:/var/www/html/wp-content/plugins/meu-plugin
+            - ./award-progress-bar:/var/www/html/wp-content/plugins/award-progress-bar
 
     db:
         image: mysql:5.7
